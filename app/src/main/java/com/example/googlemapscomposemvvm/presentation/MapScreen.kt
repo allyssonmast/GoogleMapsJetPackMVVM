@@ -1,5 +1,6 @@
 package com.example.googlemapscomposemvvm.presentation
 
+import android.provider.CalendarContract
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
@@ -36,9 +38,11 @@ fun MapScreen(
                     mapsViewModel.onEvent(MapEvent.ToggleFalloutMap)
                 }
             ) {
-                Icon(imageVector = if (mapsViewModel.state.isFalloutMap){
+                Icon(
+                    imageVector = if (!mapsViewModel.state.isFalloutMap){
                     Icons.Default.LocationOn } else Icons.Default.Close,
-                    contentDescription = "Toogle Fallout Map ")
+                    contentDescription = "Toogle Fallout Map ",
+                    )
             }
         },
     ) { paddingValues ->
